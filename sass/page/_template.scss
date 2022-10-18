@@ -1,0 +1,179 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: $color-gray2;
+    &.noscroll {
+        position: static !important;
+        width: 100%;
+        height: 100%;
+        overflow: hidden !important;
+        overflow-y: hidden !important;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+// 最外圍預設為100%
+.wrapper {
+    width: 100%;
+    margin: 0px auto;
+    @include screen('mobile') {
+        // background: #FFF;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+}
+
+// 整體共用container樣式，請注意首頁切版頁面的整齊
+.container {
+    padding: 0;
+    margin: 0 auto;
+    max-width: $container-max; //請看_variable.scss
+}
+
+.main {
+    position: relative;
+    margin: 0 auto;
+    // 可先設定一個中央區塊最大寬，限制accesskey對齊
+    h2 {
+        line-height: 1.25em;
+    }
+}
+
+////////////////////////////////////////////////////////////
+// 為了與首頁區隔，請在內頁加上innerpage ClassName
+.innerpage {
+    >.container {
+        @include gutter(); //gutter 代表左右要留白
+        display: flex;
+    }
+    .center_block {
+        flex: none;
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+    .left_block {
+        flex: none;
+        flex-basis: 260px;
+        max-width: 260px;
+        margin-right: 40px;
+        &.hidden {
+            +.center_block {
+                flex: none;
+                flex-basis: 100%;
+                max-width: 100%;
+            }
+        }
+        +.center_block {
+            flex: auto;
+            flex-basis: calc(100% - 300px);
+            max-width: calc(100% - 300px);
+        }
+        @include screen('tablet') {
+            display: none;
+            +.center_block {
+                flex: none;
+                flex-basis: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+    &.small_size {
+        font-size: .938em;
+    }
+    &.large_size {
+        font-size: 1.125em;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.admLogin{
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, .3);
+    padding: 2em;
+    width: 500px;
+    margin:8vh auto 2vh;
+    @include screen('mobile') {
+        width: 80%;
+    }
+    h1{
+        text-align: center;
+        line-height: 1.3em;
+        font-weight: 500;
+        color:$primaryColor;
+    }
+    .form_title{
+        max-width: 0;
+        flex: 0 0 0;
+        align-self: flex-start;
+        padding: 0.65em 0; 
+        font-size: 0; 
+    }
+    .form_content{
+        max-width: calc(100% - 0px);
+        flex-basis: calc(100% - 0px);
+    }
+    .vercode{
+        @include screen('mobile') {
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+        .btn-icon{
+            position: static;
+            width: 40px;
+            height: 40px;
+            margin: .2em;
+
+
+        }
+        .input-i{
+            input{
+                width: 10em;
+                padding-right:0;
+            }
+            @include screen('mobile') {
+                input{
+                    width: 96%;
+                }
+            }
+        }
+        .btn-reflash{
+            flex:0 0 auto;
+            background: $color-yellow;
+            border-radius: 50%;
+            padding: 0;
+            width: 42px;
+            height: 42px;
+            margin: .2em .5em;
+            border: none;
+        }
+        .labelEffect{
+            @include screen('mobile') {
+               display: block;
+           }
+       }
+   }
+   .forget{
+    padding:.5em 1em;
+    text-align: right;
+    a{
+        padding: .3em 1em;
+        border-radius: 5px;
+        color:$primaryColor;
+        &:hover, &:focus{
+            background: $secondaryColor;
+            color:#fff;
+        }
+    }
+}
+}
