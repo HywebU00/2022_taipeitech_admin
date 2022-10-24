@@ -157,13 +157,27 @@ body {
             margin: .2em .5em;
             border: none;
         }
-        .labelEffect{
-            @include screen('mobile') {
-               display: block;
+        .btn-vint{
+            flex:0 0 auto;
+            background: $color-yellow;
+            border-radius: 50%;
+            padding: 0;
+            width: 42px;
+            height: 42px;
+            margin: .2em .5em;
+            border: none;
+            .i_show:before{
+               width: 1.5em;
+               height: 1.5em;
            }
        }
+       .labelEffect{
+        @include screen('mobile') {
+           display: block;
+       }
    }
-   .forget{
+}
+.forget{
     padding:.5em 1em;
     text-align: right;
     a{
